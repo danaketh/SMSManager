@@ -1,12 +1,9 @@
 # PHP Client for SmsManager.cz
 
-[![Build Status](https://travis-ci.org/danaketh/SMSManager.svg)](https://travis-ci.org/danaketh/SMSManager)
-[![Quality Score](https://scrutinizer-ci.com/g/danaketh/SMSManager/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/danaketh/SMSManager)
-[![Downloads](https://poser.pugx.org/danaketh/sms-manager/d/total.svg)](https://packagist.org/packages/danaketh/sms-manager)
-[![Code Coverage](https://scrutinizer-ci.com/g/danaekth/SMSManager/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/danaketh/SMSManager)
+[![Build Status](https://github.com/danaketh/SMSManager/actions/workflows/qa.yml/badge.svg)](https://github.com/danaketh/SMSManager)
 [![GitHub Issues](https://img.shields.io/github/issues/danaketh/SMSManager.svg?style=flat-square)](https://github.com/danaketh/SMSManager/issues)
 
-Library for PHP that can send SMS messages via SmsManager.cz gateway. PHP 8.2+ fork of [SMSManager](https://github.com/simPod/SMSManager). _(not all API methods are implemented for now)_
+Library for PHP that can send SMS messages via SmsManager.cz gateway. PHP8 fork of [SMSManager](https://github.com/simPod/SMSManager). _(not all API methods are implemented for now)_
 
 Installation
 ------------
