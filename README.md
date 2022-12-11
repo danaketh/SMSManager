@@ -1,19 +1,18 @@
-PHP Client for SmsManager.cz
-======================
+# PHP Client for SmsManager.cz
 
-[![Build Status](https://travis-ci.org/simPod/SMSManager.svg)](https://travis-ci.org/simPod/SMSManager)
-[![Quality Score](https://scrutinizer-ci.com/g/simPod/SMSManager/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/simPod/SMSManager)
-[![Downloads](https://poser.pugx.org/simpod/sms-manager/d/total.svg)](https://packagist.org/packages/simpod/sms-manager)
-[![Code Coverage](https://scrutinizer-ci.com/g/simPod/SMSManager/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/simPod/SMSManager)
-[![GitHub Issues](https://img.shields.io/github/issues/simPod/SMSManager.svg?style=flat-square)](https://github.com/simPod/SMSManager/issues)
+[![Build Status](https://travis-ci.org/danaketh/SMSManager.svg)](https://travis-ci.org/danaketh/SMSManager)
+[![Quality Score](https://scrutinizer-ci.com/g/danaketh/SMSManager/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/danaketh/SMSManager)
+[![Downloads](https://poser.pugx.org/danaketh/sms-manager/d/total.svg)](https://packagist.org/packages/danaketh/sms-manager)
+[![Code Coverage](https://scrutinizer-ci.com/g/danaekth/SMSManager/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/danaketh/SMSManager)
+[![GitHub Issues](https://img.shields.io/github/issues/danaketh/SMSManager.svg?style=flat-square)](https://github.com/danaketh/SMSManager/issues)
 
-Library for PHP that can send SMS messages via SmsManager.cz gateway. _(not all API methods are implemented for now)_
+Library for PHP that can send SMS messages via SmsManager.cz gateway. PHP 8.2+ fork of [SMSManager](https://github.com/simPod/SMSManager). _(not all API methods are implemented for now)_
 
 Installation
 ------------
 
 ```sh
-composer require simpod/sms-manager
+composer require danaketh/sms-manager
 ```
 
 Usage
