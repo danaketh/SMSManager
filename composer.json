@@ -1,5 +1,5 @@
 {
-    "name": "simpod/sms-manager",
+    "name": "danaketh/sms-manager",
     "description": "PHP library for sending SMS via SmsManager.cz",
     "keywords": [
         "sms",
@@ -11,26 +11,33 @@
         {
             "name": "Simon Podlipsky",
             "email": "simon@podlipsky.net"
+        },
+        {
+            "name": "Daniel Tlach",
+            "email": "daniel@tlach.cz"
         }
     ],
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "require": {
-        "php": "^7.2",
+        "php": "^8.2",
         "ext-dom": "*",
+        "ext-libxml": "*",
         "ext-simplexml": "*",
         "beberlei/assert": "^3.1",
-        "consistence/consistence": "^1.0 | ^2.0",
-        "guzzlehttp/guzzle": "^6.0"
+        "guzzlehttp/guzzle": "^7.5"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^7.0",
-        "phpstan/phpstan": "^0.11.5",
-        "phpstan/phpstan-beberlei-assert": "^0.11.0",
-        "phpstan/phpstan-phpunit": "^0.11.0",
-        "phpstan/phpstan-strict-rules": "^0.11.0",
-        "phpunit/phpunit": "^8"
+        "doctrine/coding-standard": "^10.0",
+        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan-beberlei-assert": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.3",
+        "phpstan/phpstan-strict-rules": "^1.4",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
@@ -41,5 +48,10 @@
         "psr-4": {
             "SimPod\\SmsManager\\Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
+        "codesniffer": "vendor/bin/phpcs --standard=Doctrine src tests",
+        "tests": "vendor/bin/phpunit"
     }
 }
