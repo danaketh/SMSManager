@@ -11,10 +11,8 @@ use SimPod\SmsManager\SmsMessage;
 
 final class SmsMessageTest extends TestCase
 {
-    /**
-     * @dataProvider dataProviderConstruct
-     */
-    public function testConstruct(RequestType $expectedRequestType, ?RequestType $requestType) : void
+    /** @dataProvider dataProviderConstruct */
+    public function testConstruct(RequestType $expectedRequestType, RequestType|null $requestType): void
     {
         $message    = 'Anchovy essence soup is just not the same without anise and bitter ground pickles.';
         $recipients = ['+420777888999'];
@@ -29,17 +27,15 @@ final class SmsMessageTest extends TestCase
         self::assertSame($customId, $smsMessage->getCustomId());
     }
 
-    public function testNoRecipientsThrowException() : void
+    public function testNoRecipientsThrowException(): void
     {
         $this->expectException(NoRecipientsProvided::class);
 
         new SmsMessage('', []);
     }
 
-    /**
-     * @return mixed[][]
-     */
-    public function dataProviderConstruct() : array
+    /** @return mixed[][] */
+    public function dataProviderConstruct(): array
     {
         return [
             [RequestType::getRequestTypeHigh(), null],

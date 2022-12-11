@@ -6,58 +6,44 @@ namespace SimPod\SmsManager;
 
 class ResponseRequest
 {
-    /** @var int */
-    protected $requestId;
-
-    /** @var int */
-    protected $customId;
-
     /** @var string[] */
-    protected $numbers = [];
+    protected array $numbers = [];
 
-    /** @var int */
-    protected $smsCount;
-
-    /** @var float */
-    protected $smsPrice;
-
-    public function __construct(int $requestId, int $customId, int $smsCount, float $smsPrice)
-    {
-        $this->requestId = $requestId;
-        $this->customId  = $customId;
-        $this->smsCount  = $smsCount;
-        $this->smsPrice  = $smsPrice;
+    public function __construct(
+        protected int $requestId,
+        protected int $customId,
+        protected int $smsCount,
+        protected float $smsPrice,
+    ) {
     }
 
-    public function getRequestId() : int
+    public function getRequestId(): int
     {
         return $this->requestId;
     }
 
-    public function getCustomId() : int
+    public function getCustomId(): int
     {
         return $this->customId;
     }
 
-    public function addNumber(string $number) : void
+    public function addNumber(string $number): void
     {
         $this->numbers[] = $number;
     }
 
-    /**
-     * @return string[]
-     */
-    public function getNumbers() : array
+    /** @return string[] */
+    public function getNumbers(): array
     {
         return $this->numbers;
     }
 
-    public function getSmsCount() : int
+    public function getSmsCount(): int
     {
         return $this->smsCount;
     }
 
-    public function getSmsPrice() : float
+    public function getSmsPrice(): float
     {
         return $this->smsPrice;
     }

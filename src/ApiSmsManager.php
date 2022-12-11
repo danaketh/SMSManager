@@ -11,6 +11,7 @@ use GuzzleHttp\Exception\ServerException;
 use Psr\Http\Message\ResponseInterface;
 use SimpleXMLElement;
 use SimPod\SmsManager\Exception\SendingFailed;
+
 use function assert;
 use function dom_import_simplexml;
 
@@ -19,30 +20,25 @@ final class ApiSmsManager implements SmsManager
     private const XML_BASE_PATH = 'https://xml-api.smsmanager.cz/';
     private const XML_PATH_SEND = 'Send';
 
-    /** @var string */
-    private $apiKey;
+    private string $apiKey;
 
-    /** @var Client */
-    private $xmlClient;
+    private Client $xmlClient;
 
     public function __construct()
     {
         $this->xmlClient = new Client(
             [
                 'base_uri' => self::XML_BASE_PATH,
-            ]
+            ],
         );
     }
 
-    public function setApiKey(string $apiKey) : void
+    public function setApiKey(string $apiKey): void
     {
         $this->apiKey = $apiKey;
     }
 
-    /**
-     * @return Response|bool
-     */
-    public function send(SmsMessage $smsMessage)
+    public function send(SmsMessage $smsMessage): Response|bool
     {
         $xml = $this->buildXml($smsMessage);
 
@@ -60,7 +56,7 @@ final class ApiSmsManager implements SmsManager
                             'contents' => $xml,
                         ],
                     ],
-                ]
+                ],
             );
 
             return $this->buildResponseData($response);
@@ -71,7 +67,7 @@ final class ApiSmsManager implements SmsManager
         }
     }
 
-    private function buildXml(SmsMessage $smsMessage) : ?string
+    private function buildXml(SmsMessage $smsMessage): string|null
     {
         $xml           = new SimpleXMLElement('<RequestDocument/>');
         $requestHeader = $xml->addChild('RequestHeader');
@@ -103,36 +99,36 @@ final class ApiSmsManager implements SmsManager
 
         /* removes <?xml version="1.0"?> */
         $dom = dom_import_simplexml($xml);
-        assert($dom !== false);
-
+        assert($dom->ownerDocument !== null);
         $xml = $dom->ownerDocument->saveXML($dom->ownerDocument->documentElement);
+        assert($xml !== false);
 
         return $hasAnyNumber ? $xml : null;
     }
 
-    private function buildResponseData(ResponseInterface $apiResponse) : Response
+    private function buildResponseData(ResponseInterface $apiResponse): Response
     {
         $result = new SimpleXMLElement((string) $apiResponse->getBody());
 
-        $responseId   = (int) $result->Response['ID'];
-        $responseType = (string) $result->Response['Type'];
+        $responseId   = (int) $result->Response['ID']; // @phpcs:ignore
+        $responseType = (string) $result->Response['Type']; // @phpcs:ignore
 
         $response = new Response($responseId, $responseType);
 
-        /** @var SimpleXMLElement $responseRequestList */
-        $responseRequestList = $result->ResponseRequestList;
+        $responseRequestList = $result->ResponseRequestList; // @phpcs:ignore
+        assert($responseRequestList instanceof SimpleXMLElement);
 
-        foreach ($responseRequestList->ResponseRequest as $request) {
+        foreach ($responseRequestList->ResponseRequest as $request) { // @phpcs:ignore
             $responseRequest = new ResponseRequest(
-                (int) $request->RequestID,
-                (int) $request->CustomID,
+                (int) $request->RequestID, // @phpcs:ignore
+                (int) $request->CustomID, // @phpcs:ignore
                 (int) $request['SmsCount'],
-                (float) $request['SmsPrice']
+                (float) $request['SmsPrice'],
             );
 
-            /** @var SimpleXMLElement $responseNumbersList */
-            $responseNumbersList = $request->ResponseNumbersList;
-            foreach ($responseNumbersList->Number as $phoneNumber) {
+            $responseNumbersList = $request->ResponseNumbersList; // @phpcs:ignore
+            assert($responseNumbersList instanceof SimpleXMLElement);
+            foreach ($responseNumbersList->Number as $phoneNumber) { // @phpcs:ignore
                 $responseRequest->addNumber((string) $phoneNumber);
             }
 

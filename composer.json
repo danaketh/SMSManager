@@ -52,6 +52,7 @@
     "scripts": {
         "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
         "codesniffer": "vendor/bin/phpcs --standard=Doctrine src tests",
+        "codesniffer-fix": "vendor/bin/phpcbf --standard=Doctrine src tests",
         "tests": "vendor/bin/phpunit"
     }
 }

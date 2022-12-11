@@ -5,74 +5,54 @@ declare(strict_types=1);
 namespace SimPod\SmsManager;
 
 use SimPod\SmsManager\Exception\NoRecipientsProvided;
+
 use function count;
 
 class SmsMessage
 {
-    /** @var string */
-    protected $message;
+    protected RequestType $requestType;
 
-    /** @var RequestType */
-    protected $requestType;
-
-    /** @var string[] */
-    protected $recipients = [];
-
-    /** @var string|null */
-    protected $sender;
-
-    /** @var int|null */
-    protected $customId;
-
-    /**
-     * @param string[] $recipients
-     */
+    /** @param string[] $recipients */
     public function __construct(
-        string $message,
-        array $recipients,
-        ?RequestType $requestTypeHigh = null,
-        ?string $sender = null,
-        ?int $customId = null
+        protected string $message,
+        protected array $recipients = [],
+        RequestType|null $requestTypeHigh = null,
+        protected string|null $sender = null,
+        protected int|null $customId = null,
     ) {
         if (count($recipients) === 0) {
             throw new NoRecipientsProvided();
         }
 
-        $this->message = $message;
-
         if ($requestTypeHigh === null) {
             $requestTypeHigh = RequestType::getRequestTypeHigh();
         }
+
         $this->requestType = $requestTypeHigh;
-        $this->sender      = $sender;
-        $this->customId    = $customId;
-        $this->recipients  = $recipients;
     }
 
-    public function getMessage() : string
+    public function getMessage(): string
     {
         return $this->message;
     }
 
-    public function getRequestType() : RequestType
+    public function getRequestType(): RequestType
     {
         return $this->requestType;
     }
 
-    /**
-     * @return string[]
-     */
-    public function getRecipients() : array
+    /** @return string[] */
+    public function getRecipients(): array
     {
         return $this->recipients;
     }
 
-    public function getSender() : ?string
+    public function getSender(): string|null
     {
         return $this->sender;
     }
 
-    public function getCustomId() : ?int
+    public function getCustomId(): int|null
     {
         return $this->customId;
     }

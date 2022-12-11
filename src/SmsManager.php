@@ -6,8 +6,5 @@ namespace SimPod\SmsManager;
 
 interface SmsManager
 {
-    /**
-     * @return Response|bool
-     */
-    public function send(SmsMessage $smsMessage);
+    public function send(SmsMessage $smsMessage): Response|bool;
 }
