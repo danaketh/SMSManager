@@ -22,7 +22,7 @@ final class SmsMessageTest extends TestCase
 
         self::assertSame($message, $smsMessage->getMessage());
         self::assertSame($recipients, $smsMessage->getRecipients());
-        self::assertSame($expectedRequestType, $smsMessage->getRequestType());
+        self::assertSame($expectedRequestType->getValue(), $smsMessage->getRequestType()->getValue());
         self::assertSame($sender, $smsMessage->getSender());
         self::assertSame($customId, $smsMessage->getCustomId());
     }
