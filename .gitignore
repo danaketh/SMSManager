@@ -1,5 +1,5 @@
+/.idea/
 /composer.lock
 /vendor
 /.phpcs-cache
-/phpcs.xml
-/phpstan.neon
+/.phpunit.result.cache
