@@ -2,6 +2,7 @@
 
 [![Build Status](https://github.com/danaketh/SMSManager/actions/workflows/qa.yml/badge.svg)](https://github.com/danaketh/SMSManager)
 [![GitHub Issues](https://img.shields.io/github/issues/danaketh/SMSManager.svg?style=flat-square)](https://github.com/danaketh/SMSManager/issues)
+[![Latest Stable Version](http://poser.pugx.org/danaketh/sms-manager/v)](https://packagist.org/packages/danaketh/sms-manager) [![Total Downloads](http://poser.pugx.org/danaketh/sms-manager/downloads)](https://packagist.org/packages/danaketh/sms-manager) [![Latest Unstable Version](http://poser.pugx.org/danaketh/sms-manager/v/unstable)](https://packagist.org/packages/danaketh/sms-manager) [![License](http://poser.pugx.org/danaketh/sms-manager/license)](https://packagist.org/packages/danaketh/sms-manager) [![PHP Version Require](http://poser.pugx.org/danaketh/sms-manager/require/php)](https://packagist.org/packages/danaketh/sms-manager)
 
 Library for PHP that can send SMS messages via SmsManager.cz gateway. PHP8 fork of [SMSManager](https://github.com/simPod/SMSManager). _(not all API methods are implemented for now)_
 
