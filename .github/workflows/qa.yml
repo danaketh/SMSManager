@@ -12,6 +12,7 @@ permissions:
 jobs:
   code_quality:
     runs-on: ubuntu-latest
+    name: Code Quality
     steps:
     - uses: actions/checkout@v3
 
@@ -32,7 +33,7 @@ jobs:
 
     - name: PHPStan
       run: composer phpstan
-    
+
     - name: CoderSniffer
       run: composer codesniffer
 
